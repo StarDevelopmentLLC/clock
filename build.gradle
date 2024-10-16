@@ -22,12 +22,12 @@ publishing {
 }
 
 dependencies {
-    implementation 'com.github.StarDevelopmentLLC:property:0.1.0'
+    implementation 'com.github.StarDevelopmentLLC:property:0.1.1'
     implementation 'com.github.StarDevelopmentLLC:time:0.1.0'
 }
 
 group = "com.github.StarDevelopmentLLC"
-version = "0.1.0"
+version = "0.1.1"
 
 java {
     toolchain {
