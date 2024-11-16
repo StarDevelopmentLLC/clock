@@ -9,25 +9,21 @@ repositories {
     mavenCentral()
 }
 
-jar {
-//    destinationDirectory.set(file("$rootProject.projectDir/build/libs"))
-}
-
 publishing {
     publications {
-        maven(org.gradle.api.publish.maven.MavenPublication) {
+        maven(MavenPublication) {
             from components.java
         }
     }
 }
 
 dependencies {
-    implementation 'com.github.StarDevelopmentLLC:property:0.1.1'
-    implementation 'com.github.StarDevelopmentLLC:time:0.1.0'
+    api 'com.github.StarDevelopmentLLC:property:0.1.4'
+    api 'com.github.StarDevelopmentLLC:time:0.1.0'
 }
 
 group = "com.github.StarDevelopmentLLC"
-version = "0.1.1"
+version = "0.1.2"
 
 java {
     toolchain {
