@@ -36,7 +36,8 @@ public abstract class Clock<T extends ClockSnapshot> {
             return;
         }
 
-        callback(createSnapshot());
+        T snapshot = createSnapshot();
+        callback(snapshot);
         long oldTime = time.get();
         count();
         long newTime = time.get();
@@ -45,6 +46,12 @@ public abstract class Clock<T extends ClockSnapshot> {
             unpause();
         } else {
             pause();
+        }
+
+        if (endCondition != null) {
+            if (endCondition.shouldEnd(snapshot)) {
+                cancel();
+            }
         }
     }
     
@@ -100,12 +107,6 @@ public abstract class Clock<T extends ClockSnapshot> {
             holder.setLastRun(time.get());
             callback.callback(snapshot);
         }
-        
-        if (endCondition != null) {
-            if (endCondition.shouldEnd(snapshot)) {
-                cancel();
-            }
-        } 
     }
     
     public Clock<T> start() {
